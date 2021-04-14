@@ -1,0 +1,52 @@
+<full-calendar [options]="calendarOptions"></full-calendar>
+<form
+    name="form"
+    (ngSubmit)="postEvent()"
+    novalidate
+>
+    <label for="description"> Description</label>
+    <input
+        type="text"
+        name="description"
+        [(ngModel)]="form.description"
+        required
+        #description="ngModel"
+    />
+    <br>
+    <label for="initialDate">initialDate</label>
+    <p>El formato para ingresar la fecha es yyyy-mm-ddThh:mm:ss</p>
+    <input
+    type="text"
+    name="initialDate"
+    [(ngModel)]="form.initialDate"
+    required
+    #initialDate="ngModel"
+    /> 
+    <br>
+    <label for="endDate">endDate</label>
+    <p>El formato para ingresar la fecha es yyyy-mm-ddThh:mm:ss</p>
+      <input
+      type="text"
+      name="endDate"
+      [(ngModel)]="form.endDate"
+      required
+      #endDate="ngModel"
+    />
+    <input type ="submit"/>
+</form>
+
+
+<table>
+    <tr>
+        <th>Description</th>
+        <th>initialDate</th>
+        <th>EndDate</th>
+        
+    </tr>
+    <tr *ngFor="let event of events">
+        <td>{{event.description}}</td>
+        <td>{{event.initialDate}}</td>
+        <td>{{event.endDate}}</td>
+        <td><button (click)="deleteEvent(event.id)">Delete</button></td>
+    </tr>
+</table>

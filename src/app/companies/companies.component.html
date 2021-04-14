@@ -1,0 +1,40 @@
+<h1>Companies</h1>
+<div *ngIf = "isFormVisible">
+    <label for="name">Name</label>
+    <input type="text" name="name" required>
+    <br>
+    <label for="email">Email</label>
+    <input type="text" name="email" required>
+    <br>
+    <label for="gobermentId">GobermenId</label>
+    <input type="text" name="gobermentId" required>
+    <br>
+    <button>Save</button>
+</div>
+<button (click)="isFormVisible = true">New Company</button>
+
+<table>
+    <tr>
+        <th>
+            id
+        </th>
+        <th>
+            name
+        </th>
+        <th>
+            email
+        </th>
+        <th>
+            goberment ID
+        </th>
+    </tr>
+    <tr *ngFor = "let company of companies">
+        <td>{{company.id}}</td>
+        <td>{{company.name}}</td>
+        <td>{{company.email}}</td>
+        <td>{{company.gobermentId}}</td>
+
+    </tr>
+
+    {{ companies | json}}
+</table>
